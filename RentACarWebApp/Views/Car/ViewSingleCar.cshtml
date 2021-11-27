@@ -1,0 +1,95 @@
+﻿<html>
+
+<body>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-4">
+                <div class="text-center">
+                    <h2>@Model.Brend @Model.Model</h2>
+
+                </div>
+
+                <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                    <img src="~/images/@Model.Slika" alt="slikica" style="width:400px" />
+
+                </div>
+                <div style="height:100px">
+
+                </div>
+                @*@if (User.IsInRole("Admin"))
+                {
+                    <div class="text-center">
+                        <a href="/Car/Edit/@Model.Kljuc" class="btn btn-warning">Modify</a>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <a href="/Car/Rent/@Model.Kljuc" class="btn btn-success">Rent Now</a>
+
+                    </div>
+                }*@
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Sure you wanna delete it?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a href="/Home/Delete/@Model.Kljuc" type="button" class="btn btn-danger" value="Delete">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-1"></div>
+            @*col-md-6 col-lg-9 hidden-xs hidden-sm*@
+            <div class="col-7">
+                <strong style="font-size:large">Detalji o vozilu</strong><br>
+                <table class="table table-user-information">
+                    <tbody>
+
+                        @foreach (var data in Model.sviAtributi)
+                        {
+                        <tr>
+                            <td>@data.Key:</td>
+                            @if (data.Key == "Dodatna oprema")
+                            {
+                                foreach (var dodatna in data.Value)
+                                {
+
+                                    <td>@dodatna</td>
+
+                                }
+                            }
+                            else
+                            {
+                                <td>@data.Value</td>
+
+                            }
+                        </tr>
+
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

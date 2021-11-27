@@ -1,0 +1,58 @@
+﻿@using RentACarWebApp.Models
+@model List<Korisnik>
+@{
+    ViewBag.Title = "ViewAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Svi registrovani korisnici</h2>
+
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Korisnik</span></th>
+                                    <th><span>Grad</span></th>
+                                    <th><span>Broj telefona</span></th>
+                                    <th><span>Email</span></th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var korisnik in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            <img src="~/Images/user2.jpg" alt="" style="width:80px">
+                                            <a href="/Korisnik/ViewSingle/@korisnik.Id" class="user-link">@korisnik.Ime @korisnik.Prezime</a>
+                                        </td>
+                                        <td>
+                                            @korisnik.Grad
+                                        </td>
+                                        <td>
+                                            @korisnik.BrojTelefona
+                                        </td>
+                                        <td>
+                                            <a href="#">@korisnik.Email</a>
+                                        </td>
+                                        
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+﻿@model RentACarWebApp.Models.Istorija
+@{
+    ViewBag.Title = "FinishRent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("FinishRent", "Home"))
+{
+<div class="row">
+    <h2>FinishRent</h2>
+    <div class="invisible">kljuc</div>
+    <div class="invisible">@Html.EditorFor(model => model.Kljuc)</div>
+    <div class="invisible">@Html.EditorFor(model => model.automobil.Kljuc)</div>
+</div>
+
+
+    <div class="row">
+        <div class="col-4 text-center">
+            <a href="/Car/ViewSingleCar/@Model.automobil.Kljuc"><h5>@Model.automobil.Brend @Model.automobil.Model</h5></a>
+            <h6>@Model.automobil.Registracija</h6>
+            <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                <img src="~/images/@Model.automobil.Slika" alt="slikica" style="width:300px" />
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="text-center">
+                <a href="/Korisnik/ViewSingle/@Model.korisnik.Id"><h5>@Model.korisnik.Ime @Model.korisnik.Prezime</h5></a>
+
+                <div class="text-center">
+                    <img src="~/images/user2.jpg" alt="slikica" style="width:100px" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr />
+
+    <div class="site-section pt-0 pb-0 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form class="trip-form">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <h3 class="m-0">Detalji</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="cf-1">Adresa Preuzimanja</label>
+                                @Html.TextBoxFor(model => model.AdresaPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-2">Datum Preuzimanja</label>
+                                @Html.TextBoxFor(model => model.DatumPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Adresa Vracanja</label>
+                                @Html.TextBoxFor(model => model.AdresaVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Datum vracanja</label>
+                                @Html.TextBoxFor(model => model.DatumVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                        </div>
+
+                    </form>
+                    <hr />
+
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <h3 class="m-0">Detalji nakon preuzimanja</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="custom-checkbox col-5">
+                            <div class="form-group col-md-6">
+                                @Html.EditorFor(model => model.AutomobilIspravan)
+                                <label for="cf-2">Automobil ispravan</label>
+
+                            </div>
+
+                        </div>
+
+                        
+                        
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Naplacene kazne</label>
+                            @Html.EditorFor(m => m.NaplaceneKazne, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Da li je vozilo osteceno? </label>
+                            @Html.EditorFor(m => m.OstecenjaVozila, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Korisnik ukupno presao km:</label>
+                            @Html.EditorFor(m => m.PredjenaKilometraza, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Beleske</label>
+                            @Html.TextAreaFor(m => m.Beleske, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

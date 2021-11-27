@@ -1,0 +1,109 @@
+﻿@model RentACarWebApp.ViewModels.RentViewModel
+
+@{
+    ViewBag.Title = "Rent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Rent", "Car"))
+{
+    <h2>Rent</h2>
+    <div class="row">
+
+        <div class="col-lg-4 ">
+            <div class="item-1">
+                <div class="text-center">
+                    <a href="#"><img src="~/Images/@Model.ModelAutomobila.Slika" alt="Image" class="img-fluid" style="height:150px"></a>
+                    <div class="item-1-contents">
+                        <div class="text-center">
+                            <h3>@Model.ModelAutomobila.Brend @Model.ModelAutomobila.Model</h3>
+                            <div>
+
+                                @Html.TextBoxFor(model => model.ModelAutomobila.Key, new { style = "display:none" })
+                                @Html.TextBoxFor(model => model.ModelAutomobila.Cena, new { style = "display:none" })
+
+                            </div>
+                            <div class="rent-price"><span>€@Model.ModelAutomobila.Cena/</span>dan</div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <h6>Izaberite dodatne usluge:</h6>
+            <div class="container">
+
+                @for (int i = 0; i < 6; i++)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                   name="SelectedUsluge"
+                                   value="@Model.DostupneUsluge[i].Value"
+                                   @if (Model.SelectedUsluge.Contains(@Model.DostupneUsluge[i].Value)) { <text> checked </text> } /> @Model.DostupneUsluge[i].Text :: Cena = @Model.SveDodatneUsluge[i].Cena
+                            </label>
+                        </div>
+                    }
+            </div>
+            <div class="form-group col-md-9">
+                <label for="cf-1">Odaberite ukupan broj vozila:</label>
+                <input type="number" id="cf-1" name="BrojVozila" class="form-control" max="@Model.ModelAutomobila.BrojDostupnih" min="1">
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr />
+
+<div class="site-section pt-0 pb-0 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+
+                <form class="trip-form">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-md-6">
+                            <h3 class="m-0">Detalji rentiranja</h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="cf-1">Adresa Preuzimanja</label>
+                            <input type="text" id="cf-1" name="AdresaPreuzimanja" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-2">Datum Preuzimanja</label>
+                            <input type="date" id="cf-2" name="DatumPreuzimanja" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Adresa Vracanja</label>
+                            <input type="text" id="cf-4" name="AdresaVracanja" class="form-control datepicker px-3">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cf-4">Datum vracanja</label>
+                            <input type="date" id="cf-4" name="DatumVracanja" class="form-control datepicker px-3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="submit" value="Rentiraj" class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+}

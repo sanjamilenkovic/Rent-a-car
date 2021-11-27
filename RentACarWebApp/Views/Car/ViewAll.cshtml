@@ -1,0 +1,96 @@
+﻿@using RentACarWebApp.ViewModels
+@model RentACarWebApp.ViewModels.ViewAllViewModel
+@{
+    ViewBag.Title = "Ponuda vozila";
+}
+
+<h2>Ponuda vozila</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+
+    foreach (var klasa in Model.SveKlaseAutomobila)
+    {
+        <label>
+            <input type="checkbox"
+                   name="OdabraneKlaseAutomobila"
+                   value="@klasa.Value"
+                   @if (Model.OdabraneKlaseAutomobila.Contains(klasa.Value)) { <text> checked </text> } /> @klasa.Text
+            </label>
+        }
+
+        <div class="col-lg-6">
+            <input type="submit" value="Filtriraj" class="btn btn-success">
+        </div>
+    }
+
+
+<hr />
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="site-wrap" id="home-section">
+
+        <div class="site-section bg-light">
+            <div class="container">
+                <div class="row">
+                    @foreach (var auto in Model.SviModeli)
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="item-1">
+                                <div class="text-center">
+                                    <a href="#"><img src="~/Images/@auto.Slika" alt="Image" class="img-fluid" style="height:150px"></a>
+                                    <div class="item-1-contents">
+                                        <div class="text-center">
+                                            <h3>@auto.Brend @auto.Model</h3>
+                                            <div class="rent-price"><span>€@auto.Cena/</span>dan</div>
+                                            <div class="rent-price"><span>Broj dostupnih modela: @auto.BrojDostupnih</span></div>
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                <div class="rent-price"><span>Ukupan broj modela: @auto.UkupanBrojModela</span></div>
+
+                                                <a href="/Car/SviModeli/@auto.Key" class="btn btn-success">Pogledaj Sve Modele</a>
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex action">
+                                        @if (User.IsInRole("Korisnik"))
+                                        {
+                                            <a href="/Car/Rent/@auto.Key" class="btn btn-success">Rent Now</a>
+
+                                        }
+                                    </div>
+                                </div>
+                                <hr />
+
+                            </div>
+                        </div>
+                        <br>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/aos.js"></script>
+
+        <script src="js/main.js"></script>
+</body>
+</html>

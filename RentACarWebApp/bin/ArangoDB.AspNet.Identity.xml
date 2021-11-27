@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArangoDB.AspNet.Identity</name>
+    </assembly>
+    <members>
+        <member name="T:ArangoDB.AspNet.Identity.IdentityUser">
+            <summary>
+            Class IdentityUser.
+            </summary>
+        </member>
+        <member name="F:ArangoDB.AspNet.Identity.IdentityUser.Key">
+            <summary>
+            Database key for the user. This is relative to the collection
+            and could be duplicated between shards. Do not use this as the
+            unique for your users.
+            </summary>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.Id">
+            <summary>
+            Unique key for the user
+            </summary>
+            <value>The identifier.</value>
+            <returns>The unique key for the user</returns>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.UserName">
+            <summary>
+            Gets or sets the name of the user.
+            </summary>
+            <value>The name of the user.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.PasswordHash">
+            <summary>
+            Gets or sets the password hash.
+            </summary>
+            <value>The password hash.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.SecurityStamp">
+            <summary>
+            Gets or sets the security stamp.
+            </summary>
+            <value>The security stamp.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.Roles">
+            <summary>
+            Gets the roles.
+            </summary>
+            <value>The roles.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.Claims">
+            <summary>
+            Gets the claims.
+            </summary>
+            <value>The claims.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUser.Logins">
+            <summary>
+            Gets the logins.
+            </summary>
+            <value>The logins.</value>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.IdentityUser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.IdentityUser"/> class.
+            </summary>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.IdentityUser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.IdentityUser"/> class.
+            </summary>
+            <param name="userName">Name of the user.</param>
+        </member>
+        <member name="T:ArangoDB.AspNet.Identity.IdentityUserClaim">
+            <summary>
+            Class IdentityUserClaim.
+            </summary>
+        </member>
+        <member name="F:ArangoDB.AspNet.Identity.IdentityUserClaim.Key">
+            <summary>
+            Database key for the user this claim.
+            </summary>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUserClaim.UserId">
+            <summary>
+            Gets or sets the user identifier.
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUserClaim.ClaimType">
+            <summary>
+            Gets or sets the type of the claim.
+            </summary>
+            <value>The type of the claim.</value>
+        </member>
+        <member name="P:ArangoDB.AspNet.Identity.IdentityUserClaim.ClaimValue">
+            <summary>
+            Gets or sets the claim value.
+            </summary>
+            <value>The claim value.</value>
+        </member>
+        <member name="T:ArangoDB.AspNet.Identity.UserStore`1">
+            <summary>
+                Class UserStore.
+            </summary>
+            <summary>
+                Class UserStore.
+            </summary>
+            <typeparam name="TUser">The type of the t user.</typeparam>
+            <summary>
+                Class UserStore.
+            </summary>
+            
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.AddClaimAsync(`0,System.Security.Claims.Claim)">
+            <summary>
+                Adds the claim asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="claim">The claim.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetClaimsAsync(`0)">
+            <summary>
+                Gets the claims asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task{IList{Claim}}.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.RemoveClaimAsync(`0,System.Security.Claims.Claim)">
+            <summary>
+                Removes the claim asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="claim">The claim.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.CreateAsync(`0)">
+            <summary>
+                Creates the user asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.DeleteAsync(`0)">
+            <summary>
+                Deletes the user asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.FindByIdAsync(System.String)">
+            <summary>
+                Finds the by identifier asynchronous.
+            </summary>
+            <param name="userId">The user identifier.</param>
+            <returns>Task{`0}.</returns>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.FindByNameAsync(System.String)">
+            <summary>
+                Finds the by name asynchronous.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <returns>Task{`0}.</returns>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.UpdateAsync(`0)">
+            <summary>
+                Updates the user asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.AddLoginAsync(`0,Microsoft.AspNet.Identity.UserLoginInfo)">
+            <summary>
+                Adds the login asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="login">The login.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.FindAsync(Microsoft.AspNet.Identity.UserLoginInfo)">
+            <summary>
+                Finds the user asynchronous.
+            </summary>
+            <param name="login">The login.</param>
+            <returns>Task{`0}.</returns>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetLoginsAsync(`0)">
+            <summary>
+                Gets the logins asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task{IList{UserLoginInfo}}.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.RemoveLoginAsync(`0,Microsoft.AspNet.Identity.UserLoginInfo)">
+            <summary>
+                Removes the login asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="login">The login.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetPasswordHashAsync(`0)">
+            <summary>
+                Gets the password hash asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task{System.String}.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.HasPasswordAsync(`0)">
+            <summary>
+                Determines whether [has password asynchronous] [the specified user].
+            </summary>
+            <param name="user">The user.</param>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.SetPasswordHashAsync(`0,System.String)">
+            <summary>
+                Sets the password hash asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="passwordHash">The password hash.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.AddToRoleAsync(`0,System.String)">
+            <summary>
+                Adds to role asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="role">The role.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetRolesAsync(`0)">
+            <summary>
+                Gets the roles asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task{IList{System.String}}.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.IsInRoleAsync(`0,System.String)">
+            <summary>
+                Determines whether [is in role asynchronous] [the specified user].
+            </summary>
+            <param name="user">The user.</param>
+            <param name="role">The role.</param>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.RemoveFromRoleAsync(`0,System.String)">
+            <summary>
+                Removes from role asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="role">The role.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetSecurityStampAsync(`0)">
+            <summary>
+                Gets the security stamp asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>Task{System.String}.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.SetSecurityStampAsync(`0,System.String)">
+            <summary>
+                Sets the security stamp asynchronous.
+            </summary>
+            <param name="user">The user.</param>
+            <param name="stamp">The stamp.</param>
+            <returns>Task.</returns>
+            <exception cref="T:System.ArgumentNullException">user</exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.ThrowIfDisposed">
+            <summary>
+                Throws if disposed.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.UserStore`1" /> class. Uses DefaultConnection name if none was
+                specified.
+            </summary>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.UserStore`1" /> class. Uses name from ConfigurationManager or connection string
+            </summary>
+            <param name="connectionStringOrName">The connection name or sql style string.</param>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.#ctor(System.String,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.UserStore`1" /> class.
+            </summary>
+            <param name="url">The URL of the database.</param>
+            <param name="database">Name of the database.</param>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.#ctor(ArangoDB.Client.ArangoDatabase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArangoDB.AspNet.Identity.UserStore`1"/> class using a already initialized Arango Database.
+            </summary>
+            <param name="arangoDatabase">The Arango database.</param>
+        </member>
+        <member name="F:ArangoDB.AspNet.Identity.UserStore`1._db">
+            <summary>
+                The database
+            </summary>
+        </member>
+        <member name="F:ArangoDB.AspNet.Identity.UserStore`1._disposed">
+            <summary>
+                The _disposed
+            </summary>
+        </member>
+        <member name="M:ArangoDB.AspNet.Identity.UserStore`1.GetDatabaseFromSqlStyle(System.String)">
+            <summary>
+                Gets the database from connection string.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <returns>MongoDatabase.</returns>
+            <exception cref="T:System.Exception">No database name specified in connection string</exception>
+        </member>
+    </members>
+</doc>

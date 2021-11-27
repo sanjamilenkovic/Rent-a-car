@@ -1,0 +1,114 @@
+﻿@using RentACarWebApp.ViewModels;
+@model RentACarWebApp.ViewModels.RentViewModel
+@{
+    ViewBag.Title = "FinishRezervacije";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FinishRezervacije</h2>
+
+@using (Html.BeginForm())
+{
+
+    <h6>Izaberite modele:</h6>
+    <div class="container">
+
+        @foreach (var k in Model.PonudaAutomobila)
+        {
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           name="OdabraniAutomobili"
+                           value="@k.Value"
+                           @if (Model.OdabraniAutomobili.Contains(k.Value)) { <text> checked </text> } /> @k.Text
+                    </label>
+                </div>
+            }
+
+    </div>
+
+    <div class="text-center">
+        <div class="col-lg-6">
+            <input type="submit" value="Potvrdi Rezervaciju" class="btn btn-success">
+        </div>
+
+    </div>
+    <div class="invisible">@Html.EditorFor(model => model.KorisnikId)</div>
+
+    <div class="row">
+        <div class="col-2">
+            <h5>@Model.ModelAutomobila.Brend @Model.ModelAutomobila.Model</h5>
+
+
+            <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                <img src="~/images/@Model.ModelAutomobila.Slika" alt="slikica" style="width:200px" />
+            </div>
+
+        </div>
+        <div class="col-3">
+            <div class="text-center">
+                <a href="/Korisnik/ViewSingle/@Model.Korisnik.Id"><h5>@Model.Korisnik.Ime @Model.Korisnik.Prezime</h5></a>
+
+                <div class="text-center">
+                    <img src="~/images/user2.jpg" alt="user" style="width:80px" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="cf-1">Broj zahtevanih vozila:</label>
+            @Html.EditorFor(model => Model.BrojVozila, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="form-group col-md-3">
+            <label for="cf-1">Ukupno zaduzenje:</label>
+            @Html.EditorFor(model => Model.UkupnoZaduzenje, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+
+    </div>
+
+    <div class="site-section pt-0 pb-0 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form class="trip-form">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <h3 class="m-0">Detalji</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="cf-1">Adresa Preuzimanja</label>
+                                @Html.EditorFor(model => Model.AdresaPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-2">Datum Preuzimanja</label>
+                                @Html.EditorFor(model => Model.DPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Adresa Vracanja</label>
+                                @Html.EditorFor(model => Model.AdresaVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Datum vracanja</label>
+                                @Html.EditorFor(model => Model.DVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+
+                            <div class="col-12">
+                                <h6>Uplacene dodatne usluge:</h6>
+                                @foreach (var item in Model.listaUsluga)
+                                {
+                                    @Html.EditorFor(model => item, new { disabled = "disabled", @readonly = "readonly" })
+
+                                }
+                            </div>
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

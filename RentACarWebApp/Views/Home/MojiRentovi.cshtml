@@ -1,0 +1,224 @@
+﻿@model RentACarWebApp.ViewModels.MojaRentiranjaViewModel
+@{
+    ViewBag.Title = "MojiRentovi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aktivna rentiranja</h2>
+<hr />
+
+@if (Model.ListaAktivnihRentiranja.Count > 0)
+{
+    foreach (var i in Model.ListaAktivnihRentiranja)
+    {
+        <div class="row">
+            <div class="col-4 text-center">
+                <a href="/Car/ViewSingleCar/@i.Automobil.Kljuc"><h5>@i.Automobil.Brend @i.Automobil.Model</h5></a>
+
+                <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                    <img src="~/images/@i.Automobil.Slika" alt="slikica" style="width:300px" />
+
+                </div>
+            </div>
+            <div class="col-6">
+                <h5>Zaduzili ste vozilo sa registarskom oznakom:</h5>
+                @Html.TextBoxFor(model => i.Automobil.Registracija, new { disabled = "disabled", @readonly = "readonly" })
+
+                <a href="/Car/ViewSingleCar/@i.Automobil.Kljuc" class="btn btn-success">Pogledaj detalje vozila</a>
+            </div>
+
+        </div>
+
+
+
+
+        <hr />
+
+
+        <div class="site-section pt-0 pb-0 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="trip-form">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-md-6">
+                                    <h3 class="m-0">Detalji</h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label for="cf-1">Adresa Preuzimanja</label>
+                                    @Html.TextBoxFor(model => i.AdresaPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-2">Datum Preuzimanja</label>
+                                    @Html.TextBoxFor(model => i.DatumPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-4">Adresa Vracanja</label>
+                                    @Html.TextBoxFor(model => i.AdresaVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-4">Datum vracanja</label>
+                                    @Html.TextBoxFor(model => i.DatumVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <h6>Uplacene dodatne usluge:</h6>
+                                @foreach (var item in i.listaUsluga)
+                                {
+                                    @Html.TextBoxFor(model => item, new { disabled = "disabled", @readonly = "readonly" })
+
+                                }
+
+                                <h6>Ukupno zaduzenje: </h6>
+                                @Html.TextBoxFor(model => i.Cena, new { disabled = "disabled", @readonly = "readonly" })
+
+                                <div>
+                        </form>
+                        <hr class="new5" />
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h5 class="text-danger">Nemate aktivnih rentiranja</h5>
+    <hr class="new4" />
+}
+
+
+<h2>Istorija rentiranja</h2>
+<hr />
+
+@if (Model.ListaSvihRentovaKorisnika.Count > 0)
+{
+    foreach (var i in Model.ListaSvihRentovaKorisnika)
+    {
+        <div class="row">
+            <div class="col-4 text-center">
+                <a href="/Car/ViewSingleCar/@i.automobil.Kljuc"><h5>@i.automobil.Brend @i.automobil.Model</h5></a>
+
+                <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                    <img src="~/images/@i.automobil.Slika" alt="slikica" style="width:300px" />
+
+                </div>
+            </div>
+            <div class="col-6">
+                <h5>Zaduzili ste vozilo sa registarskom oznakom:</h5>
+                @Html.TextBoxFor(model => i.automobil.Registracija, new { disabled = "disabled", @readonly = "readonly" })
+
+                <a href="/Car/ViewSingleCar/@i.automobil.Kljuc" class="btn btn-success">Pogledaj detalje vozila</a>
+            </div>
+
+        </div>
+
+
+
+
+        <hr />
+
+
+        <div class="site-section pt-0 pb-0 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="trip-form">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-md-6">
+                                    <h3 class="m-0">Detalji</h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <label for="cf-1">Adresa Preuzimanja</label>
+                                    @Html.TextBoxFor(model => i.AdresaPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-2">Datum Preuzimanja</label>
+                                    @Html.TextBoxFor(model => i.DatumPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-4">Adresa Vracanja</label>
+                                    @Html.TextBoxFor(model => i.AdresaVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="cf-4">Datum vracanja</label>
+                                    @Html.TextBoxFor(model => i.DatumVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                        </form>
+                        <hr />
+
+                        <div class="col-12">
+                            <h6>Uplacene dodatne usluge:</h6>
+                            @foreach (var item in i.listaUsluga)
+                            {
+                                @Html.TextBoxFor(model => item, new { disabled = "disabled", @readonly = "readonly" })
+
+                            }
+
+                            <h6>Ukupno zaduzenje: </h6>
+                            @Html.TextBoxFor(model => i.UkupnoZaduzenje, new { disabled = "disabled", @readonly = "readonly" })
+
+                            <div>
+
+                                <hr />
+
+                                <h6>Detalji nakon preuzimanja:</h6>
+
+                                <div class="col-6">
+                                    @Html.EditorFor(model => i.Zatvoren)
+                                    <label for="cf-2">Zatvoren rent</label>
+
+                                    <br />
+                                    @Html.EditorFor(model => i.AutomobilIspravan)
+                                    <label for="cf-2">Automobil ispravan</label>
+
+
+                                </div>
+                                <div class="col-8">
+                                    <label for="cf-4">Beleske</label>
+                                    @Html.TextAreaFor(m => i.Beleske, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+
+}
+            else
+            {
+                <h5 class="text-danger">Nemate istoriju rentiranja</h5>
+            }
+
+<style>
+    hr.new5 {
+        border: 10px solid green;
+        border-radius: 5px;
+    }
+
+    hr.new4 {
+        border: 2px solid silver;
+    }
+</style>

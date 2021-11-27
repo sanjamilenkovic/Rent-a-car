@@ -1,0 +1,95 @@
+﻿@model RentACarWebApp.ViewModels.MojaRentiranjaViewModel
+@{
+    ViewBag.Title = "AktivnaRentiranja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AktivnaRentiranja</h2>
+
+@foreach (var rezervacija in Model.ListaAktivnihRentiranja)
+{
+
+    <div class="row">
+        <div class="col-2">
+            <div class="text-center">
+                <a href="/Car/ViewSingleCar/@rezervacija.Automobil.Kljuc">
+                    <h5>@rezervacija.Automobil.Brend @rezervacija.Automobil.Model</h5>
+                </a>
+                <h6>@rezervacija.Automobil.Registracija</h6>
+
+            </div>
+
+
+            <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                <img src="~/images/@rezervacija.Automobil.Slika" alt="slikica" style="width:200px" />
+            </div>
+
+        </div>
+        <div class="col-3">
+            <div class="text-center">
+                <a href="/Korisnik/ViewSingle/@rezervacija.Korisnik.Id"><h5>@rezervacija.Korisnik.Ime @rezervacija.Korisnik.Prezime</h5></a>
+
+                <div class="text-center">
+                    <img src="~/images/user2.jpg" alt="user" style="width:80px" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="site-section pt-0 pb-0 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form class="trip-form">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <h3 class="m-0">Detalji</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="cf-1">Adresa Preuzimanja</label>
+                                @Html.TextBoxFor(model => rezervacija.AdresaPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-2">Datum Preuzimanja</label>
+                                @Html.TextBoxFor(model => rezervacija.DatumPreuzimanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Adresa Vracanja</label>
+                                @Html.TextBoxFor(model => rezervacija.AdresaVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="cf-4">Datum vracanja</label>
+                                @Html.TextBoxFor(model => rezervacija.DatumVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                            </div>
+                        </div>
+
+                    </form>
+                    <hr />
+
+                    <div class="col-12">
+                        <h6>Uplacene dodatne usluge:</h6>
+                        @foreach (var item in rezervacija.listaUsluga)
+                        {
+                            @Html.TextBoxFor(model => item, new { disabled = "disabled", @readonly = "readonly" })
+
+                        }
+
+                        <h6>Ukupno zaduzenje: </h6>
+                        @Html.TextBoxFor(model => rezervacija.Cena, new { disabled = "disabled", @readonly = "readonly" })
+
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+}

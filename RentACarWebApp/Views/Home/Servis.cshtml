@@ -1,0 +1,74 @@
+﻿@model RentACarWebApp.ViewModels.ServisViewModel
+@{
+    ViewBag.Title = "Servis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Pregled istorije servisiranja za automobil</h3>
+@using (Html.BeginForm())
+{
+
+    @Html.Label("Odaberi model: ")
+    @Html.DropDownListFor(x => x.OdabranModel, Model.SviModeli)
+
+    <input type="submit" value="Odaberi" class="btn btn-success">
+}
+
+@using (Html.BeginForm())
+{
+
+    @Html.Label("Odaberi automobil: ")
+    @Html.DropDownListFor(x => x.OdabranAutomobil, Model.SviAutomobili)
+
+    <input type="submit" value="Odaberi" class="btn btn-success">
+    <hr />
+}
+
+<h3>Pregled kvarova na vozilima</h3>
+@using (Html.BeginForm())
+{
+    @Html.Label("Odaberi ogranak: ")
+    @Html.DropDownListFor(x => x.OdabranOgranak, Model.SviOgranci)
+
+    <input type="submit" value="Odaberi" class="btn btn-success">
+    <hr />
+}
+
+<h3>Pregled potrebnih servisiranja nakon vracanja automobila</h3>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Odaberi" class="btn btn-success" />
+}
+
+<hr />
+
+
+
+@if (Model.DetaljiServisa.Count > 0)
+{
+    foreach (var servis in Model.DetaljiServisa)
+    {
+
+        foreach (var detalj in servis)
+        {
+            if (detalj.Key != "_rev" && detalj.Key != "_key" && detalj.Key != "_id" && detalj.Key != "DodatneUsluge")
+            {
+                <div class="row">
+                    <div class="col-3">
+                        @Html.TextBoxFor(model => detalj.Key, new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                    <div class="col-6">@detalj.Value</div>
+
+                    <br />
+                </div>
+            }
+        }
+        <hr />
+
+    }
+
+}
+else
+{
+    <h3 class="text-danger">Nema bitnih informacija</h3>
+}

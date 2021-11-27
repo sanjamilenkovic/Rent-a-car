@@ -1,0 +1,70 @@
+﻿@model RentACarWebApp.ViewModels.ViewAllViewModel
+@{
+    ViewBag.Title = "SviModeli";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SviModeli</h2>
+
+@foreach (var auto in Model.listaSvihAutomobila)
+{
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-4">
+                <div class="text-center">
+                    <h2>@auto.Brend @auto.Model</h2>
+
+                </div>
+
+                <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                    <img src="~/images/@auto.Slika" alt="slikica" style="width:400px" />
+
+                </div>
+                <div style="height:100px">
+
+                </div>
+                @*@if (User.IsInRole("Admin"))
+                    {
+                        <div class="text-center">
+                            <a href="/Car/Edit/@Model.Kljuc" class="btn btn-warning">Modify</a>
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center">
+                            <a href="/Car/Rent/@Model.Kljuc" class="btn btn-success">Rent Now</a>
+
+                        </div>
+                    }*@
+
+                
+            </div>
+            <div class="col-1"></div>
+            @*col-md-6 col-lg-9 hidden-xs hidden-sm*@
+            <div class="col-7">
+                <strong style="font-size:large">Detalji o vozilu</strong><br>
+                <table class="table table-user-information">
+                    <tbody>
+
+                        @foreach (var data in auto.sviAtributi)
+                        {
+                            <tr>
+                                <td>@data.Key:</td>
+
+                                    <td>@data.Value</td>
+
+                                
+                            </tr>
+
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

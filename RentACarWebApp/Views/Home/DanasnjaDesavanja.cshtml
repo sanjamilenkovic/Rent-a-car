@@ -1,0 +1,105 @@
+﻿@model RentACarWebApp.ViewModels.IstorijaViewModel
+@{
+    ViewBag.Title = "IstorijaRentiranja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Zatvaranje Rentiranja</h3>
+<hr />
+
+@if (Model.rentoviZaZatvaranje.Count > 0)
+{
+    <h4 class="text-success">Rentovi koje danas treba zatvoriti</h4>
+    <hr />
+
+    foreach (var item in Model.rentoviZaZatvaranje)
+    {
+        <div class="row">
+            <div class="col-2">
+                <a href="/Car/ViewSingleCar/@item.automobil.Kljuc"><h5>@item.automobil.Brend @item.automobil.Model</h5></a>
+
+
+                <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+                    <img src="~/images/@item.automobil.Slika" alt="slikica" style="width:200px" />
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="text-center">
+                    <a href="/Korisnik/ViewSingle/@item.korisnik.Id"><h5>@item.korisnik.Ime @item.korisnik.Prezime</h5></a>
+
+                    <div class="text-center">
+                        <img src="~/images/user2.jpg" alt="slikica" style="width:80px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row text-center">
+
+                    <div class="form-group col-md-3">
+                        <label for="cf-1" class="m-0">Datum Vracanja</label>
+                        @Html.TextBoxFor(model => item.DatumVracanja, new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+
+                </div>
+
+            </div>
+            <a href="/Home/FinishRent/@item.Kljuc" type="button" class="btn btn-success" value="Delete">Zatvori</a>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <h4 class="text-danger">Danas nema bitnih dogadjaja</h4>
+}
+
+
+<hr />
+<h3>Servisiranje</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+
+    @Html.Label("Odaberi ogranak: ")
+    @Html.DropDownListFor(x => x.OdabranOgranak, Model.SviOgranci)
+
+    <input type="submit" value="Odaberi" class="btn btn-success">
+    <hr />
+}
+
+@if (Model.SpisakServisa.Count > 0)
+{
+    <h4 class="text-success">Servisi zakazani za danas</h4>
+    <hr />
+
+    foreach (var servis in Model.SpisakServisa)
+    {
+
+        foreach (var detalj in servis)
+        {
+            if (detalj.Key != "_rev" && detalj.Key != "_key" && detalj.Key != "_id")
+            {
+                <div class="row">
+                    <div class="col-3">
+                        @Html.TextBoxFor(model => detalj.Key, new { disabled = "disabled", @readonly = "readonly" })
+                    </div>
+                    <div class="col-6">@detalj.Value</div>
+
+                    <br />
+                </div>
+            }
+        }
+        <hr />
+
+    }
+}
+else if(Model.SpisakServisa.Count != null)
+{
+    <h4 class="text-danger">Danas nema bitnih servisa</h4>
+}
+else
+{
+    <h4>Odaberite ogranak</h4>
+}
